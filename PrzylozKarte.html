@@ -8,9 +8,8 @@
 <center><a href="PrzylozKarte.html">DobryDziennik</a></center>
 </header>
 <body>
-
 <form action="DobryDziennik.php" method="post">
-  <input style="opacity: 0" type="text" autofocus>
+  <input name="kod" style="opacity: 0" type="number" autofocus>
 </form>
 
 <center><img src="przylozkarte.png"></center>
@@ -19,7 +18,7 @@
 
 var input = document.querySelector('input'),
     form = document.querySelector('form');
- 
+
 input.addEventListener('input', function(ev)
 {
       if (ev.target.value.length > 8)
