@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 11 Gru 2020, 01:48
+-- Czas generowania: 17 Gru 2020, 19:02
 -- Wersja serwera: 10.4.11-MariaDB
 -- Wersja PHP: 7.4.4
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Baza danych: `specjalizacja`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `admin`
+--
+
+CREATE TABLE `admin` (
+  `id_admina` int(11) NOT NULL,
+  `Imie_admina` text COLLATE utf8mb4_polish_ci NOT NULL,
+  `Nazwisko_admina` text COLLATE utf8mb4_polish_ci NOT NULL,
+  `kod_karty_admina` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Zrzut danych tabeli `admin`
+--
+
+INSERT INTO `admin` (`id_admina`, `Imie_admina`, `Nazwisko_admina`, `kod_karty_admina`) VALUES
+(1, 'Igor', 'Sebastian', 487231571);
 
 -- --------------------------------------------------------
 
@@ -54,15 +74,15 @@ INSERT INTO `obecność` (`id`, `lekcja`, `wartość`) VALUES
 (14, 'sroda4', 0),
 (15, 'sroda5', 0),
 (16, 'czwartek1', 3),
-(17, 'czwartek2', 0),
-(18, 'czwartek3', 0),
-(19, 'czwartek4', 0),
-(20, 'czwartek5', 0),
+(17, 'czwartek2', 3),
+(18, 'czwartek3', 3),
+(19, 'czwartek4', 3),
+(20, 'czwartek5', 3),
 (21, 'piatek1', 3),
 (22, 'piatek2', 2),
 (23, 'piatek3', 1),
-(24, 'piatek4', 0),
-(25, 'piatek5', 0);
+(24, 'piatek4', 3),
+(25, 'piatek5', 1);
 
 -- --------------------------------------------------------
 
@@ -89,6 +109,12 @@ INSERT INTO `uczeń` (`id_ucznia`, `Imie_ucznia`, `Nazwisko_ucznia`, `kod_karty`
 --
 
 --
+-- Indeksy dla tabeli `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id_admina`);
+
+--
 -- Indeksy dla tabeli `obecność`
 --
 ALTER TABLE `obecność`
@@ -103,6 +129,12 @@ ALTER TABLE `uczeń`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT dla tabeli `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id_admina` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT dla tabeli `obecność`

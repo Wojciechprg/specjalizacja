@@ -7,6 +7,11 @@ echo $godziny. ":". $minuty;
 $result = mysqli_query ($db, "SELECT kod_karty FROM uczeń");
 $row = mysqli_fetch_assoc($result);
 $kod_karty = $row["kod_karty"];
+
+$result2= mysqli_query($db, "SELECT kod_karty_admina FROM admin");
+$row2=mysqli_fetch_assoc($result2);
+$kod_karty2=$row2["kod_karty_admina"];
+
 if ($_POST["kod"] == $kod_karty) {
  switch($dzientygodnia) {
 	case 1: //Poniedzialek
@@ -462,7 +467,7 @@ if ($_POST["kod"] == $kod_karty) {
 	}else if ($godziny == 10 and $minuty > 45 or $godziny == 11 and $minuty <= 15){
 		mysqli_query ($db, "UPDATE obecność SET wartość=2 WHERE lekcja='piatek4'");
 		$piatek4 = "orange"; // Zmiana koloru kratki na spoznienie
-	}else if ($godziny == 11 and $minuty > 30 or $godziny > 11){
+	}else if ($godziny == 11 and $minuty > 15 or $godziny > 11){
 		mysqli_query ($db, "UPDATE obecność SET wartość=3 WHERE lekcja='piatek4'");
 		$piatek4 = "red";
 	}
@@ -493,10 +498,11 @@ if ($_POST["kod"] == $kod_karty) {
 		$piatek5 = "red";
 	}break;
 	default:
-	 echo "weekend wypierdalaj";
+	 echo "";
 	 unset($_POST["kod"]);
  }
-}else {
+}elseif ($_POST["kod"] == $kod_karty2) {
+  header('Location: http://localhost/specjalizacja/DobryAdmin.php');
   unset($_POST["kod"]);
 }
 
