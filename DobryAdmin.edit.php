@@ -1,26 +1,18 @@
 <?php
 $db = mysqli_connect ("localhost", "root", "", "specjalizacja");
-$zajecia=$_GET['zajecia'];
-$obecności=$_GET['obecności'];
-mysqli_query($con, "UPDATE obecność SET wartość='$obecności',  WHERE lekcja=$zajecia");
-// zrób selecta do wyboru zajecia w którym nauczyciel chce zmienić dla danych zajec obecność
-//"Zajęcia: <select name=zajecia>";
-//			"<option value=poniedziałek1>Poniedziałek1</option>";
-//			"<option value=poniedziałek2>Poniedziałek2</option>";
-//      <option>tak dla kazdego </option>
-//		"</select><br>";
-// Typ obecności <select name=obecnosc>";
-//			"<option value=1>obecny</option>";
-//			"<option value=2>spóźniony</option>";
-//      <option value=3>nieobecny </option>
-//		"</select><br>";
-// na samym dole daj jeszcze href do DobryAdmin.php żeby wrócić do strony admina
+if (isset($_GET['zajecia'])) {
+  $zajecia=$_GET['zajecia'];
+  $obecności=$_GET['obecnosc'];
+  echo $zajecia;
+  echo $obecności;
+  mysqli_query($db, "UPDATE obecność SET wartość='$obecności' WHERE lekcja='$zajecia'");
+}
 ?>
 
 <html>
 <body>
 
-<form action="DobryAdmin.php">
+<form action="DobryAdmin.edit.php">
 "Zajęcia: <select name=zajecia>";
 <option value=poniedzialek1>Poniedzialek1</option>
 <option value=poniedzialek2>Poniedzialek2</option>
@@ -54,6 +46,7 @@ Typ obecności <select name=obecnosc>
 <option value=3>Nieobecny</option>
 </select><br>
 <input type="submit" value="Zmien">
+<div><a href="DobryAdmin.php">Powrót do panelu admina</a></div>
 </form>
 
 </body>
