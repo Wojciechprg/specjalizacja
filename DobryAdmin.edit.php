@@ -17,6 +17,9 @@ mysqli_query($con, "UPDATE obecność SET wartość='$obecności',  WHERE lekcja
 // na samym dole daj jeszcze href do DobryAdmin.php żeby wrócić do strony admina
 ?>
 
+<html>
+<body>
+
 <form action="DobryAdmin.php">
 "Zajęcia: <select name=zajecia>";
 <option value=poniedzialek1>Poniedzialek1</option>
@@ -52,3 +55,6 @@ Typ obecności <select name=obecnosc>
 </select><br>
 <input type="submit" value="Zmien">
 </form>
+
+</body>
+</html>
